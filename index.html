@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game|start</title>
+    <!--The below link is for font awesome,to export symbols..-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="gamestart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div id="header">
+        <h1>Catch the Match</h1>
+    </div>
+    <div class="instruction-div">
+        <div class="rule-header" onclick="instructionFn();"><i class="fa-solid fa-book fa-beat" style="color: #000000;"></i>Instructions</div> 
+        <div class="main-instruction">
+            <div class="general">
+                <h1>Objective</h1>
+                <p>Match cards of similar images in minimum possible flips before the time runs out.
+                    Timer is adjusted according to the difficulty selected and no of cards chosen(only for Hacker). </p>
+            </div>
+            <div class="specific">
+                    <div class="hackerMode">
+                        <h2>Hacker Mode</h2>
+                        <ul>
+                            <li>The player can dynamically select the number of cards.</li>
+                            <li>Match cards having same animal emoji.</li>
+                            <li>There will be two special cards present,Freeze and Bonus,only activated on choosing 24 cards or more.</li>
+                            <li>As the name suggests,Freeze will freeze the timer for 5 secs while the bonus gives 2 extra points on selection.</li>
+                            <li>Leaderboard is only activated on choosing exactly 36 cards.</li>
+                            <li>On choosing more than 64 cards,there will be presence of Dummy cards in the card deck.</li>
+                        </ul>
+                    </div>
+                    <div class="normalMode">
+                        <h2>Normal Mode</h2>
+                        <ul>
+                           <li>There will be a total of 16 cards.</li>
+                           <li>Match cards having same binary number<br>(1 to 7)</li>
+                           <li>Least number of flips will get you into leaderboard!!</li>
+                        </ul>
+    
+                   </div>
+            </div>
+        </div>    
+    </div>        
+<div id="button-holder">
+    <a href="Game-Normal.html">
+        <button id="start">Start Normal</button>
+    </a>
+    <a href="Game-Hacker.html">
+        <button id="hacker">Start Hacker</button>
+    </a>
+</div>
+  
+<script src="gamestart.js"></script>
+   
+</body>
+</html>
