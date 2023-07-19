@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databyte-Normal</title>
+    <link rel="stylesheet" href="../css/Game-Normal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--font style rubix-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik:wght@700&display=swap" rel="stylesheet">
+    <!--font style rocksalt-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="mainspace">
+        <div class="pause" onclick="pauseFn();">
+            <i class="fa-solid fa-pause"></i>
+        </div>
+        <div >
+            <div id="gamename">
+                <h1 id="title">Catch the Match</h1> 
+              </div>
+              <!--restart button to go to home page to start the game again-->
+              <a href="../index.html">
+                <button id="restart">Restart</button>
+              </a>
+              <!--Form to select the difficulty and the value is passed to js-->
+              <form>
+                <div id="selectBox">
+                    <label for="difficultyLevel" id="labelDiff" >Difficulty</label>
+                    <br>
+                    <select name="level" id="difficultyLevel" onchange="diffSelection();">
+                        <option >Select Difficulty</option>
+                        <option value="easy" >Easy</option>
+                        <option value="medium" >Medium</option>
+                        <option value="hard"  >Hard</option>
+                    </select>
+                   
+                </div>
+                
+               
+            </form>
+            <div class="leaderBoard">
+                <h3><i class="fa-solid fa-ranking-star"></i>Leaderboard</h3>
+                <p>Ready to dominate?</p>
+               <div class="first" style="background-color: #FFD700;"></div>
+               <div class="second" style="background-color:#C0C0C0 "></div>
+               <div class="third" style="background-color: #CD7F32;"></div>
+            </div>
+              
+              <!--container to have cards and (time,score,flips) div-->
+              <div id="container"
+                  
+                 <div id="time-score">
+                  <div><h2>Time :<span class="timer">&#8987;</span>s</h2></div>
+                  <div><h2>Scorecard :<span class="score"> 0</span></h2></div>
+                  <div><h2>Flips: <span class="flips"> 0</span></h2></div>
+      
+                 </div>
+                 <div id="card-container">
+                    <!--cards and inside each is a front and back side of a card-->
+                    <!--minimalistic cards are custom made by me using ui ux (figma)-->
+                    <!--Was trying to create card dynamically through html but faced a small problem,but managed to fix it for hacker mode-->
+                        <div class="card"  data-cardname="1">
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/1.png"></div>
+                              
+                        </div>
+                        <div class="card" data-cardname="2">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/2.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="7">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/7.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="6">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/6.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="2">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/2.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="0">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/0.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="7">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/7.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="4">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/4.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="6">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/6.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="1">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/1.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="4">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/4.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="0">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/0.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="3">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/3.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="3">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/3.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="5">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/5.png"></div>
+                           
+                        </div>
+                        <div class="card" data-cardname="5">
+                            
+                            <div class="backcard"><img class ="image" src="../images/cardback.png"></div>
+                            <div class="frontcard"><img class ="image" src="../images/5.png"></div>
+                           
+                        </div>                  
+                 </div>
+        </div>
+        </div>
+        
+        <!--container having the win-condition pop up after all cards are chosen-->
+        <div class="containerpop">
+       
+            <div id="header">Victory</div>
+            <div class="scorecard">Flips taken is :&nbsp;<span class="flipsWin">0</span></div>
+            <div class="playAgain"><a href="../index.html">
+                <button id="restartbtn">Play Again</button>
+              </a></div>
+        </div>
+        <!--container having the lose-condition pop up after the time is run out-->
+       <div class="loss">
+       
+            <div id="headerloss">Defeat</div>
+            <div class="scorecard"> points scored is :&nbsp;<span class="scoreLoss">0</span></div>
+            <div class="playAgain"><a href="../index.html">
+                    <button id="restartbtn">Play Again</button>
+                </a></div>
+       
+        </div>
+        <div class="resume" >
+            <i class="fa-solid fa-play" onclick="resumeFn();"></i>
+            <p>Resume</p>
+        </div>
+        <!--overlay which has opaque background when win and lose-condition pops up-->
+        <div class="overlay"></div>
+        
+        <script src="../js/Game-Normal.js"></script>  
+</body>
+</html>

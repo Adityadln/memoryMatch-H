@@ -1,0 +1,347 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    height: 100vh;
+}
+body{
+    height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    background: linear-gradient(to right ,#0066FF,#090979,#0066FF);
+}
+#container{
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   margin: 0px;   
+}
+#mainspace{
+    border:5px solid black
+}
+#gamename{
+    display: flex;
+   width: 750px;               /*has the name of the game-'Catch the Match'*/
+    justify-content: center;
+    align-items: center;   
+}
+#time-score{
+    display: flex; 
+    justify-content:space-around;
+    width: 750px;                 /*div which holds the score flips and time*/
+    height: 50px;
+    margin-bottom: 25px;   
+}
+#mainspace{
+    display: flex;
+    justify-content: center;
+}
+#card-container{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 1fr 1fr;
+    padding-left: 100px;
+    row-gap: 10px;                 /*container to hold all the cards*/
+    width: 600px;
+    column-gap: 25px;
+    perspective: 1000px;   
+}
+h1{
+    color: white;
+}
+h2{
+    color:white
+}
+.card{
+    position: relative;
+    height: 150px;
+    width: 120px;                /* individual card container which holds both the 
+                                 front and the back card*/
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;   
+}
+.card.flipped{
+    transform: rotateY(180deg);    /*when card is toggled to flipped state
+                                    then card shoufd rotate by 180 deg*/
+}
+.card:active{
+    transform: scale(0.95);
+    transition: transform 0.15s;     /*when card is clicked ,then card scales
+                                       down to 0.95 of its initial size*/
+}
+.backcard,.frontcard{
+    position: absolute;
+    height: 100%;               
+    width: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;    
+}
+.frontcard{
+    transform: rotateY(180deg);     /*frontcard is rotated and is behind the backcard 
+                                    so that when the card flips we dont get the
+                                     inverted image of frontcard*/
+}
+.image{
+    height: 150px;       /*resizing of the images*/
+    width: 120px;
+}
+#title{
+    font-family: 'Rock Salt', cursive;  /*title text*/
+    margin-bottom: 0px;
+    margin-top:0px;
+}
+#restart{
+    height: 36px;
+    width: 108px;
+    border-radius: 10px;
+    background-color: rgb(245, 177, 128);  /*restart button*/
+    font-weight: 600;
+    font-size: 18px;
+    position: absolute;
+    left: 860px;
+    top: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    box-shadow: 2px 4px 8px black;
+    transition: 0.4s;
+}
+#restart:hover{
+        /*restart when hovered on*/
+    background-color: rgb(255,255,255);
+    color: rgb(0,0,0);
+    box-shadow: 2px 8px 24px black;    
+}
+#selectBox{
+    position: absolute;
+    top: 12px;            /*div which has select(form)*/
+    left: 365px;
+}
+#labelDiff{
+    color: white;  
+}
+#difficultyLevel{
+    padding-top: 8px;
+    padding-bottom: 8px;       /*select(form)*/
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: rgb(245, 177, 128);
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    border-width: 2px;
+    border-color: black;
+}
+.containerpop{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);
+    border-color: black;
+    border-style: solid;    /*popup upon victory in non active state*/
+    width: 500px;
+    height: 400px;
+    font-family: 'Rock Salt', cursive;
+    z-index: 100;
+    transition: 600ms ease-in-out;
+}
+.containerpop.active{  
+    transform: translate(-50%,-50%) scale(1);
+       /*popup when all cards picked correctly,happens when
+                              container toggled to active state*/    
+}
+
+.loss{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);
+    border-color: black;
+    border-style: solid;
+    width: 500px;              /*popup upon loss in non active state*/
+    height: 400px;
+    font-family: 'Rock Salt', cursive;
+    z-index: 100;
+    transition: 600ms ease-in-out;
+}
+.loss.active{ 
+    transform: translate(-50%,-50%) scale(1);   
+}
+.resume{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);
+    border-color: black;
+    border-style: solid;
+    width: 500px;              /*popup upon loss in non active state*/
+    height: 400px;
+    font-family: 'Rock Salt', cursive;
+    z-index: 100;
+    transition: 600ms ease-in-out;
+}
+.resume.active{    
+    transform: translate(-50%,-50%) scale(1); 
+}
+.resume i{
+    font-size: 100px;
+    color: white;   
+}
+.resume i:hover{
+    transform: scale(1.15);
+    transition: all 0.2s ease-in-out;
+}
+.resume p{
+    font-size: 30px;
+    color: white;   
+}
+#header{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;    /*header of the victory popup*/
+    height: 60%;
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);
+    color: #00FF00;
+    font-size: 500%;
+}
+#headerloss{           
+    display: flex;
+    align-items: center;           /*header of the defeat popup(color diff)*/
+    justify-content: center;
+    height: 60%;
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);
+    color: #ff0000;
+    font-size: 500%;
+}
+.scorecard{
+    display: flex;
+    align-items: center;
+    justify-content: center;     /*scorecard of victory/defeat popup*/
+    height: 15%;
+    color: white;   
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);
+}
+.playAgain{
+    display: flex;
+    align-items: center;          /*playagain button of victory/defeat popup*/
+    justify-content: center;
+    height: 25%;
+    background: linear-gradient(to right,#0066FF,#090979,#0066FF);   
+}
+#restartbtn{
+    height: 36px;
+    width: 108px;
+    border-radius: 10px;
+    background-color: rgb(245, 177, 128);
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;    
+}
+#restartbtn:hover{
+    height: 36px;
+    width: 108px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: rgb(255,255,255);
+    color: rgb(0,0,0);
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;        /*overlay- an opaque screen on winning/losing when
+                     there is a victory/defeat popup */
+    opacity: 0;
+    pointer-events: none;
+    transition: 800ms ease-in-out;
+
+}
+.overlay.active{  
+    background-color:rgba(0, 0, 0,0.5);
+    opacity: 1;
+    pointer-events: all;   
+}
+
+.flipsWin,.scoreLoss{
+    font-family: 'Rubik', sans-serif; 
+    
+    /*score of the flips and score in rubix font
+     for better visibility when compared to rocksalt font*/
+}
+.leaderBoard{
+    /* background-color: rgb(245, 177, 128); */
+    background: linear-gradient(rgb(245, 177, 128),rgb(255,255,255));
+    width: fit-content;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 10px;
+    font-family: 'Rock Salt', cursive;
+}
+.leaderBoard h3{
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 3px;  
+}
+.leaderBoard p{
+    margin: 0;
+    font-family: 'Rock Salt', cursive;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: right;
+    margin-bottom: 5px;
+}
+.leaderBoard div{
+    font-weight: 600;
+}
+
+.leaderBoard i{
+    margin-right: 5px;
+}
+
+.pause{
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;    
+    font-size: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;  
+    border: 1px solid black; 
+    transform: scale(1);
+}
+.pause i{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.pause:hover{
+   background-color: black;
+   color: white;
+   transform: scale(1.15);
+   transition: all 0.25s ease-in-out;
+   border: 1px solid white;
+}
+
+
+
+
